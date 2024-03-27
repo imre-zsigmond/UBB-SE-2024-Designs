@@ -1,0 +1,6 @@
+@startuml ClassDiagram
+
+!include group/group.plantuml
+!include post/poll.plantuml
+
+@enduml

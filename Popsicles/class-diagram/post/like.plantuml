@@ -1,0 +1,11 @@
+@startuml Like
+
+class Like {
+    - likeId: string
+    - postId: string
+    - userId: string
+
+    + Like(likeId: string, postId: string, userId: string)
+}
+
+@enduml

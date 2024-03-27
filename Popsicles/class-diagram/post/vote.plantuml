@@ -1,0 +1,12 @@
+@startuml Vote
+
+class Vote {
+    - voteId: string
+    - userId: string
+    - pollId: string
+    - option: string
+
+    + Vote(voteId: string, userId: string, pollId: string, option: string)
+}
+
+@enduml

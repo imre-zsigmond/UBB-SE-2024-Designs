@@ -1,0 +1,39 @@
+@startuml Poll
+
+!include post.plantuml
+!include vote.plantuml
+
+class Poll extends Post {
+    - quote: string
+    - options: string[]
+
+    - isAnonymous: bool
+
+    - isTimed: bool
+    - startDate: date
+    - endDate: date
+
+    - votes: Vote[]
+
+    + Poll(postId: string, postOwnerId: string, quote: string, options: string[], isAnonymous: bool)
+
+    + getQuote(): string
+    + getOpstions(): string[]
+    + getIsAnonymous(): bool
+    + getIsTimed(): bool
+    + getStartDate(): date
+    + getEndDate(): date
+    + getVotes(): Vote[]
+
+    + vote(userId: string, option: string): void
+    
+    + generateResults(): int[]
+    + showResults(): void
+
+    + makeTimeLimited(startDate: date, endDate: date): void
+}
+
+
+Poll "1" *-- "0..*" Vote : has
+
+@enduml

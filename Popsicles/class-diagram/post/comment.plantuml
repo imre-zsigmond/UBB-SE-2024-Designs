@@ -1,0 +1,19 @@
+@startuml Comment
+
+class Comment {
+    - commentId: string
+    - postId: string
+    - userId: string
+    - content: string
+
+    + Comment(commentId: string, postId: string, userId: string, content: string)
+
+    + getCommentId(): string
+    + getPostId(): string
+    + getUserId(): string
+    + getContent(): string
+
+    + editComment(content: string): void
+}
+
+@enduml

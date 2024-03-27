@@ -1,0 +1,86 @@
+@startuml Group
+
+!include groupMember.plantuml
+!include groupPost.plantuml
+!include groupFeed.plantuml
+!include tag.plantuml
+!include role.plantuml
+
+class Group {
+    - groupId: string
+    - ownerId: string
+
+    - name: string
+    - description: string
+    - iconPath: string
+    - bannerPath: string
+
+    - password: string
+
+    - maxPostsPerHour: int
+    - isPublic: bool
+    - canMakePostByDefault: bool
+
+    - roles: Role[]
+    - tags: Tag[]
+    - groupFeed: GroupFeed
+    - groupMembers: GroupMember[]
+
+    + Group(ownerId: string, name: string, password: string, isPublic: bool)
+
+    + getGroupId(): string
+    + getOwnerId(): string
+    + getName(): string
+    + getDescription(): string
+    + getIconPath(): string
+    + getBannerPath(): string
+    + getPassword(): string
+    + getMaxPostsPerHour(): int
+    + getIsPublic(): bool
+    + getCanMakePostByDefault(): bool
+    + getRoles(): Role[]
+    + getTags(): Tag[]
+    + getGroupFeed(): GroupFeed
+    + getGroupMembers(): GroupMember[]
+
+    + setName(name: string): void
+    + setDescription(description: string): void
+    + setIconPath(iconPath: string): void
+    + setBannerPath(bannerPath: string): void
+    + setPassword(password: string): void
+    + setMaxPostsPerHour(maxPostsPerHour: int): void
+    + setIsPublic(isPublic: bool): void
+    + setCanMakePostByDefault(canMakePostByDefault: bool): void
+
+    + addGroupMember(groupMember: GroupMember): void
+    + banGroupMember(groupMemberId: string): void
+    + unbanGroupMember(groupMemberId: string): void
+    + timeOutGroupMember(groupMemberId: string, timeOut: int): void
+    + untimeOutGroupMember(groupMemberId: string): void
+
+    + generateInvitation(): string
+
+    + addGroupRole(role: Role): void
+    + removeGroupRole(roleId: string): void
+
+    + addGroupTag(tag: Tag): void
+    + removeGroupTag(tagId: string): void
+
+    + addGroupPost(groupPost: GroupPost): void
+    + editGroupPost(groupPostId: string, groupPost: GroupPost): void
+    + deleteGroupPost(groupPostId: string): void
+    + hideGroupPost(groupPostId: string): void
+    + unhideGroupPost(groupPostId: string): void
+    + pinGroupPost(groupPostId: string): void
+    + unpinGroupPost(groupPostId: string): void
+
+    + filterGroupFeed(filter) : void
+}
+
+Group "1" *-- "3...*" Role : has
+Group "1" *-- "many" Tag : has
+
+Group -- GroupFeed : contains
+Group "1" *-- "1...*" GroupMember : has
+
+@enduml

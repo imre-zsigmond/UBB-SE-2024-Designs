@@ -1,0 +1,14 @@
+@startuml Tag
+
+enum Tag {
+    VIDEO
+    PHOTO
+    SPORTS
+    NATURE
+    CULTURE
+    FOOD
+    SHOPPING
+    NIGHTLIFE
+}
+
+@enduml

@@ -1,0 +1,34 @@
+@startuml Post
+
+!include comment.plantuml
+!include like.plantuml
+
+class Post {
+    # postId: string
+    # postOwnerId: string
+    # content
+    # comments: Comment[]
+    # likes: Like[]
+
+    + Post(postId: string, postOwnerId: string, content)
+
+    + getPostId(): string
+    + getPostOwnerId(): string
+    + getContent()
+    + getComments(): Comment[]
+    + getLikes(): Like[]
+
+    + createPost(): void
+    + editPost(newPost: Post): void
+    + deletePost(): void
+
+    + likePost(like: Like): void
+    + unlikePost(like: Like): void
+    + addComment(comment: Comment): void
+    + removeComment(comment: Comment): void
+}
+
+Post "1" *-- "0..*" Comment : has
+Post *-- "0..*" Like : has
+
+@enduml

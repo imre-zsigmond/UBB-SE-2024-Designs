@@ -1,0 +1,52 @@
+@startuml GroupMember
+
+!include ../user.plantuml
+!include role.plantuml
+!include ../post/post.plantuml
+
+class GroupMember extends User {
+    - role: Role
+    - creditScore: int
+
+    + GroupMember(userId: string, username: string, password: string, email: string, role: Role)
+
+    + getRole(): Role
+    + getCreditScore(): int
+
+    + setRole(role: Role): void
+    + setCreditScore(creditScore: int): void
+
+    + changeGroupSettings(groupId: string, newSettings): void
+
+    + banGroupMember(groupMemberId: string, groupId: string): void
+    + unbanGroupMember(groupMemberId: string, groupId: string): void
+    + timeOutGroupMember(groupMemberId: string, groupId: string): void
+    + untimeOutGroupMember(groupMemberId: string, groupId: string): void
+
+    + acceptInvitation(groupMemberId: string, groupId: string): void
+    + declineInvitation(groupMemberId: string, groupId: string): void
+    - generateInvitation(groupId: string): string
+    + sendInvitation(userId: string, groupId: string): void
+
+    + changeGroupMemberRole(groupMemberId: string, groupId: string, newRole: Role): void
+    + addGroupRole(groupId: string, roleName: string): void
+    + editGroupRole(groupId: string, roleName: string, newRoleName: string): void
+
+    + addGroupPostTag(groupId: string, postId: string, tag: string): void
+    + removeGroupPostTag(groupId: string, postId: string, tag: string): void
+
+    + createGroupPost(groupId: string, post: Post): void
+    + editGroupPost(groupId: string, postId: string, newPost: Post): void
+    + deleteGroupPost(groupId: string, postId: string): void
+    + hideGroupPost(groupId: string, postId: string): void
+    + unhideGroupPost(groupId: string, postId: string): void
+    + pinGroupPost(groupId: string, postId: string): void
+    + unpinGroupPost(groupId: string, postId: string): void
+
+    + filterGroupFeed(groupId: string, filter): void
+}
+
+GroupMember -- Post
+GroupMember -- Role
+
+@enduml
