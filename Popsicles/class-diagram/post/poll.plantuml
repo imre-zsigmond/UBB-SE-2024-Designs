@@ -13,6 +13,9 @@ class Poll extends Post {
     - startDate: date
     - endDate: date
 
+    - isPaid: bool
+    - fee: int
+
     - votes: Vote[]
 
     + Poll(postId: string, postOwnerId: string, quote: string, options: string[], isAnonymous: bool)
@@ -23,6 +26,8 @@ class Poll extends Post {
     + getIsTimed(): bool
     + getStartDate(): date
     + getEndDate(): date
+    + getIsPaid(): bool
+    + getFee(): int
     + getVotes(): Vote[]
 
     + vote(userId: string, option: string): void
