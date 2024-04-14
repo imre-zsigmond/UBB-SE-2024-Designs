@@ -1,0 +1,40 @@
+@startuml GroupViewModel
+
+!include ./viewModelBase.plantuml
+
+class GroupViewModel extends ViewModelBase {
+    + Polls: ObservableCollection<Poll>
+    + PollViewModels: ObservableCollection<PollViewModel>
+    + Posts: ObservableCollection<GroupPost>
+    + GroupMembers: ObservableCollection<GroupMember>
+    + Requests: ObservableCollection<Request>
+    + SelectedPoll: Poll
+    + SelectedPollViewModel: PollViewModel
+    + SlectedGroup: Group
+    + Name: string
+    + BannerPath: string
+    + Owner: string
+    + GroupCode: string
+    + CreatedAt: string
+    + MemberCount: string
+    + PostCount: string
+    + RequestCount: string
+    + IsPublic: string
+    + ChangePrivacyCommand: RelayCommand
+    + Description: string
+    + MaxPosts: string
+    + CanMakePosts: string
+    + ChangeCanMakePostsCommand: RelayCommand
+    + Icon: string
+    + Banner: string
+    + AcceptRequestCommand: RelayCommand
+    + RejectRequestCommand: RelayCommand
+    + GroupViewModel(Group selectedGroup)
+    - ChangePrivacy(): void
+    - ChangeCanMakePosts(): void
+    - AcceptRequest(): void
+    - RejectRequest(): void
+    # OnPropertyChanged(propertyName: string): void
+}
+
+@enduml

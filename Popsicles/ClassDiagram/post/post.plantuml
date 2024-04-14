@@ -1,0 +1,12 @@
+@startuml Post
+
+class Post {
+    +Id: Guid
+    +OwnerId: Guid
+    +Description: String
+    +Image: String
+
+    +Post(Id: Guid, OwnerId: Guid, Description: string, Image: String)
+}
+
+@enduml

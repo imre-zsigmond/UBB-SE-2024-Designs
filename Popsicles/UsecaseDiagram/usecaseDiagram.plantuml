@@ -1,0 +1,130 @@
+@startuml UseCase Diagram
+
+left to right direction
+
+package "Users" {
+    actor User #Yellow
+    actor "Group Member" as GroupMember #Blue
+}
+
+package "Group Managers" {
+    actor Admin #Red
+    actor Moderator #Green
+}
+
+package "Group Management" {
+    usecase (Create Group) as CreateGroup
+    usecase (Manage Group Settings) as ManageGroupSettings
+    usecase (Manage Group Members) as ManageGroupMembers
+    usecase (Manage Group Posts) as ManageGroupPosts
+    usecase (Manage Group Roles) as ManageGroupRoles
+    usecase (Kick Group Member) as KickGroupMember
+    usecase (Remove Moderator Role) as RemoveModeratorRole
+    usecase (Assign Moderator Role) as AssignModeratorRole
+    usecase (Generate Group Invites) as GenerateGroupInvites
+    usecase (Approve Group Invites) as ApproveGroupInvites
+}
+
+package "Group Browsing" {
+    usecase (View Group) as ViewGroup
+    usecase (Create Post) as CreatePost
+    usecase (View Group Posts) as ViewGroupPosts
+    usecase (View Group Roles) as ViewGroupRoles
+    usecase (Filter Group Posts) as FilterGroupPosts
+}
+
+User -- CreateGroup
+User -- (Join Group)
+User -- ViewGroup
+
+package "Group Viewing" {
+    usecase (View Group Members) as ViewGroupMembers
+    usecase (View Group Settings) as ViewGroupSettings
+}
+
+ViewGroup <.. ViewGroupMembers : <<extends>>
+ViewGroup <.. ViewGroupSettings : <<extends>>
+
+Admin -- ManageGroupSettings
+Admin -- ManageGroupMembers
+Admin -- ManageGroupPosts
+Admin -- ManageGroupRoles
+Admin -- KickGroupMember
+Admin -- RemoveModeratorRole
+Admin -- AssignModeratorRole
+
+Admin -- ViewGroup
+Admin -- CreatePost
+Admin -- GenerateGroupInvites
+Admin -- ApproveGroupInvites
+Admin -- ViewGroupPosts
+Admin -- ViewGroupRoles
+Admin -- FilterGroupPosts
+
+Moderator -- ManageGroupSettings
+Moderator -- ManageGroupMembers
+Moderator -- ManageGroupPosts
+Moderator -- ManageGroupRoles
+
+Moderator -- ViewGroup
+Moderator -- CreatePost
+Moderator -- GenerateGroupInvites
+Moderator -- ViewGroupPosts
+Moderator -- ViewGroupRoles
+Moderator -- FilterGroupPosts
+
+package "Group Member Management" {
+    usecase (Ban Group Members) as BanGroupMembers
+    usecase (Unban Group Members) as UnbanGroupMembers
+    usecase (Timeout Group Members) as TimeoutGroupMembers
+    usecase (Untimeout Group Members) as UntimeoutGroupMembers
+}
+
+ManageGroupMembers <.. BanGroupMembers : <<extends>>
+ManageGroupMembers <.. UnbanGroupMembers : <<extends>>
+ManageGroupMembers <.. TimeoutGroupMembers : <<extends>>
+ManageGroupMembers <.. UntimeoutGroupMembers : <<extends>>
+
+package "Group Role Management" {
+    usecase (Create Custom Role) as CreateCustomRole
+    usecase (Edit Custom Role) as EditCustomRole
+    usecase (Delete Custom Role) as DeleteCustomRole
+    usecase (Assign Custom Role) as AssignCustomRole
+}
+
+ManageGroupRoles <.. CreateCustomRole : <<extends>>
+ManageGroupRoles <.. EditCustomRole : <<extends>>
+ManageGroupRoles <.. DeleteCustomRole : <<extends>>
+ManageGroupRoles <.. AssignCustomRole : <<extends>>
+
+package "Group Post Management" {
+    usecase (Edit Post) as EditPost
+    usecase (Delete Post) as DeletePost
+    usecase (Hide Post) as HidePost
+    usecase (Unhide Post) as UnhidePost
+}
+
+ManageGroupPosts <.. EditPost : <<extends>>
+ManageGroupPosts <.. DeletePost : <<extends>>
+ManageGroupPosts <.. HidePost : <<extends>>
+ManageGroupPosts <.. UnhidePost : <<extends>>
+
+GroupMember -- ViewGroup
+GroupMember -- CreatePost
+GroupMember -- GenerateGroupInvites
+GroupMember -- ViewGroupPosts
+GroupMember -- ViewGroupRoles
+GroupMember -- FilterGroupPosts
+
+package "Poll Management" {
+    usecase (Create Poll) as CreatePoll
+    usecase (Edit Poll) as EditPoll
+    usecase (Delete Poll) as DeletePoll
+}
+
+CreatePost <.. CreatePoll : <<extends>>
+CreatePost <.. EditPoll : <<extends>>
+EditPoll <.. DeletePoll : <<extends>>
+
+
+@enduml

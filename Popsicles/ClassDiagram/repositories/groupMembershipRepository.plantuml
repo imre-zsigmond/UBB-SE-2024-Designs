@@ -1,0 +1,20 @@
+@startuml GroupMembershipRepository
+
+!include ../group/groupMembership.plantuml
+
+class GroupMembershipRepository {
+    - _connection: SqlConnection
+    - _groupMemberships: List<GroupMembership>
+
+    + GroupMembershipRepository(connection: SqlConnection)
+    - LoadDataFromSql(): void
+    + GetGroupMembership(groupMembershipId: Guid): GroupMembership
+    + GetGroupMemberships(): List<GroupMembership>
+    + AddGroupMembership(groupMembership: GroupMembership)
+    + Update(groupMembership: GroupMembership)
+    + RemoveGroupMembership(groupMembershipId: Guid)
+}
+
+GroupMembershipRepository "1" *-- "0..*" GroupMembership : "Contains"
+
+@enduml

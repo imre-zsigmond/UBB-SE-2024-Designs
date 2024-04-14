@@ -1,0 +1,12 @@
+@startuml RelayCommand
+
+class RelayCommand extends ICommand {
+    + execute: Action<object>
+    + canExecute: Func<object, bool>
+    + CanExecuteChanged: event EventHandler
+    + RelyCommand(execute: Action<object>, canExecute: Func<object, bool>)
+    + CanExecute(parameter: object): bool
+    + Execute(parameter: object): void
+}
+
+@enduml

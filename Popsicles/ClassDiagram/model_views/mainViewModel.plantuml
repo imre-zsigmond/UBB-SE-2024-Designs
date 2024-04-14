@@ -1,0 +1,14 @@
+@startuml MainViewModel
+
+!include ./viewModelBase.plantuml
+
+class MainViewModel extends ViewModelBase {
+	+ Groups: ObservableCollection<Group>
+    + User: GroupMember
+    + SlectedGroup: Group
+    + SelectedGroupViewModel: GroupViewModel
+    + MainViewModel()
+    # OnPropertyChanged(propertyName: string): void
+}
+
+@enduml

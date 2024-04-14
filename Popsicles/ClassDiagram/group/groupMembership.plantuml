@@ -1,0 +1,16 @@
+@startuml GroupMembership
+
+class GroupMembership {
+    +Id: Guid
+    +GroupId: Guid
+    +GroupMemberId: Guid
+    +Role: string
+    +JoinDate: DateTime
+    +IsBanned: bool
+    +IsTimedOut: bool
+    +ByPassPostSettings: bool
+
+    +GroupMembership(Id: Guid, GroupMemberId: Guid, GroupId: Guid, Role: string, JoinDate: DateTime, IsBanned: bool, IsTimedOut: bool, ByPassPostSettings: bool)
+}
+
+@enduml

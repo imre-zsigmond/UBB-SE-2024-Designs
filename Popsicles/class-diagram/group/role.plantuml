@@ -1,9 +1,0 @@
-@startuml Role
-
-enum Role {
-    ADMIN
-    MODERATOR
-    USER
-}
-
-@endstartuml

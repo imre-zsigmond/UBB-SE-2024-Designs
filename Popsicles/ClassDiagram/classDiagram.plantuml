@@ -1,0 +1,28 @@
+@startuml ClassDiagram
+
+!include user.plantuml
+!include ./group/group.plantuml
+!include ./group/groupMember.plantuml
+!include ./group/groupMembership.plantuml
+!include ./group/groupPost.plantuml
+!include ./group/request.plantuml
+!include ./post/poll.plantuml
+!include ./post/post.plantuml
+!include ./post/vote.plantuml
+!include ./services/feedService.plantuml
+!include ./services/groupService.plantuml
+!include ./repositories/groupRepository.plantuml
+!include ./repositories/requestsRepository.plantuml
+!include ./repositories/groupMemberRepository.plantuml
+!include ./repositories/groupMembershipRepository.plantuml
+
+!include ./model_views/groupPostViewModel.plantuml
+!include ./model_views/groupViewModel.plantuml
+!include ./model_views/mainViewModel.plantuml
+!include ./model_views/pollViewModel.plantuml
+!include ./model_views/relaycommand.plantuml
+
+MainViewModel *-- GroupViewModel
+
+@enduml
+

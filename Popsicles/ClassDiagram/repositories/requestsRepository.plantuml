@@ -1,0 +1,20 @@
+@startuml RequestsRepository
+
+!include ../group/request.plantuml
+
+class RequestsRepository {
+    - _connection: SqlConnection
+    - _requests: List<Request>
+
+    + RequestsRepository(connection: SqlConnection)
+    - LoadDataFromSql(): void
+    + GetRequest(requestId: Guid): Request
+    + GetAllRequests(): List<Request>
+    + AddRequest(request: Request): void
+    + UpdateRequest(request: Request): void
+    + RemoveRequest(requestId: Guid): void
+}   
+
+RequestsRepository "1" o-- "1..*" Request
+
+@enduml

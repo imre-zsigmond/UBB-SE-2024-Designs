@@ -1,0 +1,17 @@
+@startuml PollViewModel
+
+!include ./viewModelBase.plantuml
+
+class PollViewModel extends ViewModelBase {
+	+ SelectedPoll: Poll
+	+ Description: string
+	+ EndDate: string
+	+ Option0: string
+	+ Option1: string
+	+ Option2: string
+	+ Option3: string
+    + PollViewModel(selectedPoll: Poll)
+	# OnPropertyChanged(propertyName: string): void
+}
+
+@enduml

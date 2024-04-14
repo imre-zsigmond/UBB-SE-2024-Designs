@@ -1,0 +1,8 @@
+@startuml FeedService
+
+!include ../post/post.plantuml
+!include ../group/groupPost.plantuml
+
+class FeedService {
+    + FilterPostsByTags(posts: List<Post>, tags: List<string>): List<GroupPost>
+}

@@ -1,0 +1,17 @@
+@startuml GroupMember
+
+!include ../user.plantuml
+
+class GroupMember extends User {
+    +Memberships: List<GroupMembership>
+
+    +GroupMember(id: Guid, username: string, password: string, email: string, phone: string, description: string)
+    +AddMembership(membership: GroupMembership): void
+    +RemoveMembership(membershipId: Guid): void
+    +GetMembership(membershipId: Guid): GroupMembership
+}
+
+GroupMember --|> User
+GroupMember "1" *-- "0..*" GroupMembership
+
+@enduml

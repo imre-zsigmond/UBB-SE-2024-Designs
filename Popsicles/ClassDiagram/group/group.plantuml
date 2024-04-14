@@ -1,0 +1,53 @@
+@startuml Group 
+
+!include ../post/poll.plantuml
+!include ../group/groupMembership.plantuml
+!include ../group/request.plantuml
+!include ../group/groupPost.plantuml
+
+class Group {
+    + Id: Guid
+    + OwnerId: Guid
+    + Name: string
+    + Description: string
+    + Icon: string
+    + Banner: string
+    + MaxPostsPerHourPerUser: int
+    + IsPublic: bool
+    + CanMakePostsByDefault: bool
+    + GroupCode: string
+    + CreatedAt: DateTime
+    + Memberships: List<GroupMembership>
+    + Requests: List<Request>
+    + Polls: List<Poll>
+    + Posts: List<GroupPost>
+    - _memberCount: int
+    - _postCount: int
+    - _requestCount: int
+
+    +Group(Id: Guid, OwnerId: Guid, Name: string, Description: string, Icon: string, Banner: string, MaxPostsPerHourPerUser: int, IsPublic: bool, CanMakePostsByDefault: bool, GroupCode: string)
+
+    + GetMemberCount(): int
+    + GetPostCount(): int
+    + GetRequestCount(): int
+
+    + GetMembership(groupMemberId: Guid): GroupMembership
+    + AddMember(groupMembership: GroupMembership): void
+    + RemoveMember(groupMembershipId: Guid): void
+    + GetRequest(requestId: Guid): Request
+    + AddRequest(request: Request): void
+    + RemoveRequest(requestId: Guid): void
+    + GetPost(postId: Guid): GroupPost
+    + AddPost(post: GroupPost): void
+    + RemovePost(postId: Guid): void
+    + GetPoll(pollId: Guid): Poll
+    + AddPoll(poll: Poll): void
+    + RemovePoll(pollId: Guid): void
+}
+
+Group "0..*" *-- "0..*" GroupMembership : Memberships
+Group "1" *-- "0..*" Request : Requests
+Group "1" *-- "0..*" Poll : Polls
+Group "1" *-- "0..*" GroupPost : Posts
+
+@enduml

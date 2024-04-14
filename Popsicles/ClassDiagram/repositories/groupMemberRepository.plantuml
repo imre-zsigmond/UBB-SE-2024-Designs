@@ -1,0 +1,20 @@
+@startuml GroupMemberRepository
+
+!include ../group/groupMember.plantuml
+
+class GroupMemberRepository {
+    - _connection: SqlConnection
+    - _groupMembers: List<GroupMember>
+
+    + GroupMemberRepository(connection: SqlConnection)
+    - LoadDataFromSql(): void
+    + GetGroupMember(groupMemberId: Guid): GroupMember
+    + GetGroupMembers(): List<GroupMember>
+    + AddGroupMember(groupMember: GroupMember): void
+    + Update(groupMember: GroupMember): void
+    + RemoveGroupMember(groupMemberId: Guid): void
+}
+
+GroupMemberRepository "1" o-- "1..*" GroupMember : "Contains"
+
+@enduml

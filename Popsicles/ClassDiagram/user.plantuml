@@ -1,0 +1,20 @@
+@startuml User
+
+class User {
+    +Id: Guid
+    +Username: string
+    +Password: string
+    +Email: string
+    +Description: string
+    +Phone: string
+    +OutgoingRequests: List<Request>
+
+    +User(id: Guid, username: string, password: string, email: string, phone: string, description: string)
+    +AddOutgoingRequest(request: Request): void
+    +RemoveOutgoingRequest(requestId: Guid): void
+    +GetOutgoingRequest(requestId: Guid): Request
+    +Login(username: string, password: string): void
+    +Logout(): void
+}
+
+@enduml

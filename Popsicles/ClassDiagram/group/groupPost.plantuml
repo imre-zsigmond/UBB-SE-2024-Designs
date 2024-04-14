@@ -1,0 +1,18 @@
+@startuml GroupPost
+
+!include ../post/post.plantuml
+
+class GroupPost extends Post {
+    +GroupId: Guid
+    +IsPinned: bool
+    +IsSpecificToRole: String
+    +Tags: List<String>
+
+    +GroupPost(Id: Guid, OwnerId: Guid, Description: string, Image: string, GroupId: Guid)
+    +AddTag(Tag: string): void
+    +RemoveTag(Tag: string): void
+}
+
+GroupPost --|> Post
+
+@enduml

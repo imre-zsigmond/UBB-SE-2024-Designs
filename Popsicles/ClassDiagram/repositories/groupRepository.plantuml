@@ -1,0 +1,20 @@
+@startuml GroupRepository
+
+!include ../group/group.plantuml
+
+class GroupRepository {
+    - _connection: SqlConnection
+    - _groups: List<Group>
+
+    + GroupRepository(connection: SqlConnection)
+    - LoadDataFromSql(): void
+    + GetGroup(groupId: Guid): Group
+    + GetGroups(): List<Group>
+    + AddGroup(group: Group): void
+    + Update(group: Group): void
+    + RemoveGroup(groupId: Guid): void
+}
+
+GroupRepository "1" o-- "1..*" Group : Contains
+
+@enduml

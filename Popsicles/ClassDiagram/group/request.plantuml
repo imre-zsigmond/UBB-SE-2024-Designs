@@ -1,0 +1,11 @@
+@startuml Request
+
+class Request {
+    + Id: Guid
+    + GroupMemberId: Guid
+    + GroupId: Guid
+
+    + Request(Id: Guid, GroupMemberId: Guid, GroupId: Guid)
+}
+
+@enduml

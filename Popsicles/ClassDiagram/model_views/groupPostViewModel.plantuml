@@ -1,0 +1,15 @@
+@startuml GroupPostViewModel
+
+!include ./viewModelBase.plantuml
+
+class GroupPostViewModel extends ViewModelBase {
+    + UserNameGroupName: string 
+    + DateTime: string
+    + PostDescription: string
+    + Likes: int
+    + Comments: int
+    + PropertyChanged: PropertyChangedEventHandler
+    # OnPropertyChanged(propertyName: string): void
+}
+
+@enduml

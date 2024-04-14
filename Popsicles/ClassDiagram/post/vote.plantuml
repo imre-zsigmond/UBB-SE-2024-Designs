@@ -1,0 +1,12 @@
+@startuml Vote 
+
+class Vote {
+    +Id: Guid
+    +GroupMemberId: Guid
+    +PollId: Guid
+    +Choices: List<string>
+
+    +Vote(Id: Guid, groupMemberId: Guid, pollId: Guid)
+    +AddChoice(choice: string): void
+    +RemoveChoice(choice: string): void
+}

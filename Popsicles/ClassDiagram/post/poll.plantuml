@@ -1,0 +1,33 @@
+@startuml Poll
+
+!include ./vote.plantuml
+
+class Poll {
+    +Id: Guid
+    +OwnerId: Guid
+    +GroupId: Guid
+    -Tags: List<string>
+    +SpecificToRole: string
+    +IsPinned: bool
+    +Description: bool
+    +Options: List<string>
+    +ResultsVisible: bool
+    +IsMultipleChoice: bool
+    +IsAnonymous: bool
+    +IsLive: bool
+    +EndTime: DateTime
+    +Votes: List<Vote>
+
+    +Poll(Id: Guid, ownerId: Guid, description: string, image: string, groupId: Guid)
+    +AddOption(option: string): void
+    +RemoveOption(option: string): void
+    +AddTag(tag: string): void
+    +RemoveTag(tag: string): void
+    +GetVote(voteId: Guid): Vote
+    +AddVote(vote: Vote): void
+    +RemoveVote(voteId: Guid): void
+}
+
+Poll "1" *-- "0..*" Vote : Contains
+
+@enduml

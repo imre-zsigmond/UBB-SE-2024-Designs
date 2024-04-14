@@ -1,0 +1,52 @@
+@startuml GroupService
+
+!include ../repositories/groupRepository.plantuml
+!include ../repositories/groupMemberRepository.plantuml
+!include ../repositories/groupMembershipRepository.plantuml
+!include ../repositories/requestsRepository.plantuml
+!include ./feedService.plantuml
+
+
+class GroupService {
+    -DEFAULT_GROUP_NAME: string
+    -DEFAULT_GROUP_DESCRIPTION: string
+    -DEFAULT_GROUP_ICON: string
+    -DEFAULT_GROUP_BANNER: string
+    -DEFAULT_MAX_POSTS_PER_HOUR_PER_USER: int
+    -DEFAULT_IS_PUBLIC: bool
+    -DEFAULT_CAN_MAKE_POSTS_BY_DEFAULT: bool
+    -DEFAULT_GROUP_ROLE: string
+    -DEFAULT_POST_IS_PINNED: bool
+    -DEFAULT_POST_DESCRIPTION: string
+
+    -GroupRepository: GroupRepository
+    -GroupMemberRepository: GroupMemberRepository
+    -GroupMembershipRepository: GroupMembershipRepository
+
+    + GroupService(groupRepository: GroupRepository, groupMemberRepository: GroupMemberRepository, groupMembershipRepository: GroupMembershipRepository)
+    + CreateGroup(ownerId: Guid): void
+    + UpdateGroup(groupId: Guid, name: string, description: string, icon: string, banner: string, maxPostsPerHourPerUser: int, isPublic: bool, canMakePostsByDefault: bool): void
+    + DeleteGroup(groupId: Guid): void
+    + AddMember(groupMemberId: Guid, groupId: Guid, role: string = "user"): void
+    + RemoveMember(groupMemberId: Guid, groupId: Guid): void
+    + BanMember(groupMemberId: Guid, groupId: Guid): void
+    + UnbanMember(groupMemberId: Guid, groupId: Guid): void
+    + TimeoutMember(groupMemberId: Guid, groupId: Guid): void
+    + UntimeoutMember(groupMemberId: Guid, groupId: Guid): void
+    + ChangeRole(groupMemberId: Guid, groupId: Guid, newRole: string): void
+    + ByPassPostSettings(groupMemberId: Guid, groupId: Guid): void
+    + RemoveByPassPostSettings(groupMemberId: Guid, groupId: Guid): void
+    + AddRequest(groupMemberId: Guid, groupId: Guid): void
+    + AcceptRequest(requestId: Guid): void
+    + RejectRequest(requestId: Guid): void
+    + CreateGroupPost(groupId: Guid, groupMemberId: Guid, content: string): void
+}
+
+GroupService *-- GroupRepository
+GroupService *-- GroupMemberRepository
+GroupService *-- GroupMembershipRepository
+GroupService *-- RequestsRepository
+
+GroupService --- FeedService
+
+@enduml
