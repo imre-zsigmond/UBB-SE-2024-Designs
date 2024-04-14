@@ -1,0 +1,85 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Images\arrow-button.png" />
+    <None Remove="Resources\Images\bannerGroup.png" />
+    <None Remove="Resources\Images\basket.png" />
+    <None Remove="Resources\Images\bid-button.png" />
+    <None Remove="Resources\Images\buy-button.png" />
+    <None Remove="Resources\Images\catei.png" />
+    <None Remove="Resources\Images\comments.png" />
+    <None Remove="Resources\Images\dislike.png" />
+    <None Remove="Resources\Images\donate-button.png" />
+    <None Remove="Resources\Images\Dorian.jpeg" />
+    <None Remove="Resources\Images\download.jpg" />
+    <None Remove="Resources\Images\heart.png" />
+    <None Remove="Resources\Images\home.png" />
+    <None Remove="Resources\Images\like.png" />
+    <None Remove="Resources\Images\more-button.png" />
+    <None Remove="Resources\Images\plusLogo.png" />
+    <None Remove="Resources\Images\share.png" />
+    <None Remove="Resources\Images\Star.png" />
+    <None Remove="Resources\Images\Vini.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\arrow-button.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\bannerGroup.png" />
+    <Resource Include="Resources\Images\basket.png" />
+    <Resource Include="Resources\Images\bid-button.png" />
+    <Resource Include="Resources\Images\buy-button.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\catei.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\comments.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\dislike.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\donate-button.png" />
+    <Resource Include="Resources\Images\Dorian.jpeg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\download.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\heart.png" />
+    <Resource Include="Resources\Images\home.png" />
+    <Resource Include="Resources\Images\like.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\more-button.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\plusLogo.png" />
+    <Resource Include="Resources\Images\share.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\Star.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\Vini.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+
+  </ItemGroup>
+
+</Project>
